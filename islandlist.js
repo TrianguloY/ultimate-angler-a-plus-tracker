@@ -148,7 +148,7 @@ Islands = [{
 		genFish("Black Rabbitfish", "", "", "x", "x", "", "", "", "", "", "", "", "x", ""),
 		genFish("Barracuda", "x", "", "", "", "", "x", "x", "", "", "", "x", "", ""),
 		genFish("Boxfish", "", "x", "", "", "", "", "x", "x", "", "x", "", "", ""),
-		genFish("Okhotsk Atka Mackerel", "", "x", "", "", "", "x", "x", "", "", "", "", "", ""),
+		genFish("Okhotsk Atka mackerel", "", "x", "", "", "", "x", "x", "", "", "", "", "", ""),
 		genFish("Flathead Mullet", "", "", "", "", "", "", "", "x", "", "x", "", "x", "")]
 },
 {
