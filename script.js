@@ -69,6 +69,7 @@ initButtons = function() {
 		button.onclick = function() { updateBait(this.bait) };
 		button.innerText = bait;
 		button.bait = bait;
+		button.style.color = bait;
 		buttonDiv.appendChild(button);
 	}
 
@@ -130,7 +131,7 @@ rankIslands = function() {
 	islandRanks = [];
 	checkboxes = JSON.parse(localStorage.getItem("ua_fishcheckboxes"));
 	if (checkboxes == null) {
-		document.getElementById("baitthisrun").innerText = "To begin, select A+ fish you have already caught.";
+		document.getElementById("baitthisrun").innerHTML= `To begin, <a href="fishchecker.html">select A+ fish you have already caught</a> or <a href="#" onclick="initializeEmpty()">initialize without any caugth fish</a>.`;
 		return;
 	}
 	for (i in Islands) {
@@ -289,3 +290,9 @@ updateBaitDisplay = function() {
 	 initButtons();
 	 resetBait();
  });
+
+initializeEmpty = function() {
+	localStorage.setItem("ua_fishcheckboxes", JSON.stringify([]));
+	uploadToPHP(function() {});
+	updateBaitDisplay();
+}

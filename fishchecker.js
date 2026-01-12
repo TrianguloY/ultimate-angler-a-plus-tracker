@@ -72,7 +72,7 @@ genCheckBoxes = function() {
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
 		checkbox.onclick = function() { updateCount("*") };
-		var label = document.createElement("a");
+		var label = document.createElement("span");
 
 		label.innerText = fish;
 

@@ -3,29 +3,44 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Ultimate Angler A+ Tracker</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-	<a href="fishchecker.html">Set your already caught A+ fish</a>
+	<h1>Ultimate Angler A+ Tracker</h1>
+	<p><a href="fishchecker.html">Set your already caught A+ fish</a></p>
+	<p><a href="about.html">About this tool</a></p>
+	
+	<hr/>
+	
+	<h3>Choose available bait:</h3>
 	<div id="baitadder"></div>
-	<button id="reset" onclick="resetBait()"">Reset bait</button>
 	<p></p>
+	<button id="reset" onclick="resetBait()">Reset bait</button>
+	
+	<hr/>
+	
+	<h3>Choose available mystery fish:</h3>	
 	<div id="mysteryadder"></div>
+	<p></p>
+	<button id="mysterytoggle" onclick="toggleMysterySpecies()">Toggle All Mystery Species</button>
+	<button id="cleanup" onclick="cleanupToggle()">Toggle Cleanup</button>
 	
-	<button id="mysterytoggle" onclick="toggleMysterySpecies()"">Toggle All Mystery Species</button>
-	<button id="cleanup" onclick="cleanupToggle()"">Toggle Cleanup</button>
-	<p id="baitthisrun"></p>
-	<table id="islandranks"><tr>
+	<hr/>
 	
+	<h2>Result:</h2>
+	<p id="baitthisrun">asdasd</p>
+	<table id="islandranks">
+		<tr>
 	</table>
+	
 	<script src="server.js"></script>
 	<script src="fishlist.js"></script>
 	<script src="islandlist.js"></script>
 	<script src="script.js"></script>
-	<a href="about.html">About this tool</a>
 </body>
 
 </html>
