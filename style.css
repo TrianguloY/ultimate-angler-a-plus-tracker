@@ -17,3 +17,7 @@ input[type=checkbox] + span {
   font-size: 110%;
   display: inline;
 }
+
+td {
+  text-align: center;
+}

@@ -130,10 +130,9 @@ rankIslands = function() {
 	baitLists = Object.keys(baitMap);
 	islandRanks = [];
 	checkboxes = JSON.parse(localStorage.getItem("ua_fishcheckboxes"));
-	if (checkboxes == null) {
-		document.getElementById("baitthisrun").innerHTML= `To begin, <a href="fishchecker.html">select A+ fish you have already caught</a> or <a href="#" onclick="initializeEmpty()">initialize without any caugth fish</a>.`;
-		return;
-	}
+	document.getElementById("instructions").style.display = checkboxes==null ? 'block' : 'none';
+	if (checkboxes == null) return;
+	
 	for (i in Islands) {
 		islandToRank = {};
 		islandToRank.name = Islands[i].name;
@@ -224,35 +223,24 @@ rankIslands = function() {
 }
 
 updateBaitDisplay = function() {
-	txt = document.getElementById("baitthisrun");
-	text = ""
 	for (baitName of Object.keys(baitThisRun)) {
-		text = text + baitName + ": " + baitThisRun[baitName] + ", ";
-	}
-	txt.innerText = text;
+		button = document.getElementById("bait" + baitName);
+		button.innerText = baitName + ": " + baitThisRun[baitName];
+	}	
+	
 	locRanks = rankIslands();
 
 	document.getElementById("cleanup").innerText = "Toggle Cleanup: " + (CLEANUP_WEIGHT != 0);
 
 	table = document.getElementById("islandranks");
-	table.innerHTML = "	<th></th>\
-		<th>Location</th>\
-			<th>Island</th>\
-			<th>Baits</th>\
-			<th>A+ count</th>\
-			<th>RD</th>\
-			<th>OR</th>\
-			<th>YL</th>\
-			<th>LG</th>\
-			<th>GR</th>\
-			<th>BL</th>\
-			<th>LB</th>\
-			<th>PK</th>\
-			<th>PR</th>\
-			<th>BR</th>\
-			<th>WT</th>\
-			<th>BK</th>\
-		</tr>";
+	table.innerHTML = `
+		<th></th>
+		<th>Location</th>
+			<th>Island</th>
+			<th>Baits</th>
+			<th>A+</th>
+			<th colspan="12">Colors</th>
+		</tr>`;
 
 	for (i in locRanks) {
 		row = table.insertRow(-1);
@@ -270,9 +258,9 @@ updateBaitDisplay = function() {
 		row.insertCell(-1).innerText = locRanks[i].aplusCount + "/" + locRanks[i].fishCount;
 		for (bait of Object.keys(locRanks[i].rank)) {
 			r = row.insertCell(-1)
-			if (locRanks[i].rank[bait] == 2) ic = "X"
-			else if (locRanks[i].rank[bait] == 1) ic = "-"
-			else ic = " "
+			if (locRanks[i].rank[bait] == 2) ic = "⬤"
+			else if (locRanks[i].rank[bait] == 1) ic = "〇"
+			else ic = "·"
 			r.innerText = ic;
 			r.style.color = bait;
 			r.style.backgroundColor = "#AAAAAA"

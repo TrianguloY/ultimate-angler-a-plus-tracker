@@ -10,23 +10,12 @@ initTable = function() {
 
 	document.getElementById("fishCount").innerText = place.name + " ("+ place.island + ")"
 	table = document.getElementById("fishherediv");
-	table.innerHTML = "	\
-		<th>Fish</th>\
-			<th>RD</th>\
-			<th>OR</th>\
-			<th>YL</th>\
-			<th>LG</th>\
-			<th>GR</th>\
-			<th>BL</th>\
-			<th>LB</th>\
-			<th>PK</th>\
-			<th>PR</th>\
-			<th>BR</th>\
-			<th>WT</th>\
-			<th>BK</th>\
-		<th>A+</th>\
-		<th>Fish Number</th>\
-		</tr>";
+	table.innerHTML = `
+		<th>Fish</th>
+		<th colspan="12">colors</th>
+		<th>A+</th>
+		<th>Fish Number</th>
+		</tr>`;
 
 	fishherecheckboxes = [];
 	for (i of place.fish) {
@@ -34,8 +23,8 @@ initTable = function() {
 		row.insertCell(-1).innerText = i.propername;
 		for (bait of Object.keys(i.bait)) {
 			r = row.insertCell(-1)
-			if (i.bait[bait]) ic = "X"
-			else ic = " "
+			if (i.bait[bait]) ic = "⬤"
+			else ic = "·"
 			r.innerText = ic;
 			r.style.color = bait;
 			r.style.backgroundColor = "#AAAAAA"
