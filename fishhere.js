@@ -20,7 +20,7 @@ initTable = function() {
 	fishherecheckboxes = [];
 	for (i of place.fish) {
 		row = table.insertRow(-1);
-		row.insertCell(-1).innerText = i.propername;
+		row.insertCell(-1).innerText = i.name;
 		for (bait of Object.keys(i.bait)) {
 			r = row.insertCell(-1)
 			if (i.bait[bait]) ic = "⬤"

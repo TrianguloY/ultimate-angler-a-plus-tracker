@@ -64,7 +64,13 @@ updateCount = function(append) {
 
 genCheckBoxes = function() {
 	fishcheckboxes = [];
-	fishl = Object.keys(species)
+	fishl = [...new Set(Islands
+      .flatMap(i => i.fish)
+      .sort((a,b)=>a.id-b.id)
+      .map(f => f.name)
+    )];
+    fishl.push(...GlobalFish)
+
 	for (i in fishl) {
 		fish = fishl[i];
 

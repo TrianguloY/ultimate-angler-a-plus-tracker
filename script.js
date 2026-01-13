@@ -1,18 +1,9 @@
 baitThisRun = {};
-mysterySpeciesThisRun = {
-	"giant squid": false,
-	"oarfish": false,
-	"golden bass": false,
-	"golden koi": false,
-	"golden bream": false,
-	"golden rainbow trout": false,
-	"golden salmon": false,
-	"golden tuna": false,
-	"golden swordfish": false,
-	"golden shark": false,
-	"cheep cheep": false,
-	"blooper": false,
-};
+mysterySpeciesThisRun = Object.fromEntries(Islands
+	.flatMap(i=>i.fish)
+	.filter(f=>f.mysterySpecies)
+	.map(f=>f.name)
+	.map(name => [name, false]));
 
 
 CLEANUP_WEIGHT = 0;
@@ -149,7 +140,7 @@ rankIslands = function() {
 				fishAlreadyAPlus = checkboxes[fish.id];
 				if (fishHasBait) {
 					if (fish.mysterySpecies) {
-						isSpotted = mysterySpeciesThisRun[fish.namelower];
+						isSpotted = mysterySpeciesThisRun[fish.name];
 						hasMysterySpecies = true
 					} else {
 						isSpotted = true;
@@ -259,7 +250,7 @@ updateBaitDisplay = function() {
 		for (bait of Object.keys(locRanks[i].rank)) {
 			r = row.insertCell(-1)
 			if (locRanks[i].rank[bait] == 2) ic = "⬤"
-			else if (locRanks[i].rank[bait] == 1) ic = "〇"
+			else if (locRanks[i].rank[bait] == 1) ic = "○"
 			else ic = "·"
 			r.innerText = ic;
 			r.style.color = bait;
