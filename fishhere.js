@@ -11,16 +11,22 @@ initTable = function() {
 	document.getElementById("fishCount").innerText = place.name + " ("+ place.island + ")"
 	table = document.getElementById("fishherediv");
 	table.innerHTML = `
-		<th>Fish</th>
-		<th colspan="12">colors</th>
 		<th>A+</th>
-		<th>Fish Number</th>
+		<th>Fish</th>
+		<th colspan="12">Baits</th>
 		</tr>`;
 
 	fishherecheckboxes = [];
 	for (i of place.fish) {
 		row = table.insertRow(-1);
-		row.insertCell(-1).innerText = i.name;
+		checkboxcell = row.insertCell(-1)
+		var checkbox = document.createElement("input");
+		checkbox.type = "checkbox";
+		checkbox.fishid = i.id;
+		checkbox.checked = checkboxes[i.id];
+		checkboxcell.appendChild(checkbox);
+		fishherecheckboxes.push(checkbox);
+		row.insertCell(-1).innerText = i.name + " #" + i.id;
 		for (bait of Object.keys(i.bait)) {
 			r = row.insertCell(-1)
 			if (i.bait[bait]) ic = "⬤"
@@ -30,15 +36,6 @@ initTable = function() {
 			r.style.backgroundColor = "#AAAAAA"
 			//if (bait=="white"||bait=="yellow")
 		}
-		checkboxcell = row.insertCell(-1)
-		var checkbox = document.createElement("input");
-		checkbox.type = "checkbox";
-		checkbox.fishid = i.id;
-		checkbox.checked = checkboxes[i.id];
-		checkboxcell.appendChild(checkbox);
-		fishherecheckboxes.push(checkbox);
-		aid = row.insertCell(-1);
-		aid.innerText = i.id;
 	}
 }
 
